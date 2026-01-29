@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Server-Side Form Example</title>
+</head>
+<body>
+
+    <h1>Send Data to the Server</h1>
+
+    <p>
+        This page is static HTML. But the form below will
+        POST data to the server when you submit the form,
+        and that data will be used to create a dynamic response.
+    </p>
+
+    <form method="POST" action="/submit">
+        <label for="username">Enter your name:</label>
+        <br><br>
+        <input type="text" id="username" name="username" required>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+
+
+
+</body>
+</html>

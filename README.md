@@ -9,13 +9,12 @@ This Flask application demonstrates how to deliver dynamic content to users by p
 In the TERMINAL prompt below, enter the following commands and then press `<Enter>`
 
 ```bash
-pip install -r requirements.txt
 python app.py
 ```
 
-You will see a message in the bottom right that "Your application is available on port 5000" Click the "Open in browser" button to open the web app and explore each route.
+You will see a message in the bottom right: "Your application is available on port 5000" Click the "Open in browser" button to open the web app and explore each route.
 
-If this does not work, click on the PORTS tab below and then follow the link to the forwarded address.
+If this does not work, click on the PORTS tab in your Codespaces environment and then follow the link to open in your browser.
 
 ## Routes & Learning Objectives
 ### What is a route?
@@ -24,7 +23,7 @@ A Flask route is a rule that tells the server:
 
 “When a request comes in for this URL, run this Python function and send back its result.”
 
-They are defined by an `@app.route()` decorator. Whatever is in in between the `( )` is the URL that the route hooks to.
+They are defined by an `@app.route()` decorator. Whatever is inbetween the `( )` is the URL that the route hooks to.
 
 ---
 ### Exploring Routes
@@ -54,7 +53,7 @@ In Codespaces, open the `app.py` file to see how routes are built in Flask. Refe
 - If no name is provided, it defaults to "Guest"
 
 **Example URLs:**
-Now visit the greet route in your browser. At the end of the `/`, type `greet` and then press `<Enter>`. Try the following URL querystrings:
+Now visit the greet route in your browser. Try the following URL querystrings in the browser tab you opened earlier:
 - `/greet?name=Alice` → `Hello, Alice!`
 - `/greet?name=Bob` → `Hello, Bob!`
 - `/greet` → `Hello, Guest!`
@@ -146,7 +145,7 @@ Now visit the greet route in your browser. At the end of the `/`, type `greet` a
 **Hands on exercises**
 1. Modify the `/` route to display a different message
 2. Add a new variable to the status template
-3. Create a brand new route and test it
+3. Create a brand new route at `/practice`. Follow the instructions in `app.py`
 
 
 ---

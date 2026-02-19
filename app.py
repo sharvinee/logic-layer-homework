@@ -7,7 +7,7 @@ app = Flask(__name__)
 # The route() decorator tells Flask what URL should trigger our function. In this case, we are defining the root URL ("/").
 @app.route("/")
 def home():
-    return "<h1>Hello from the server!</h1>Try the following routes:<br><ul><li><a href='/greet?name=YourName'>/greet?name=YourName</a></li><li><a href='/status'>/status</a></li><li><a href='/name.html'>/name.html</a></li><li><a href='/practice'>/practice</a></li></ul>"
+    return "<h1>Welcome to the Logic Layer practice app!</h1>Try the following routes:<br><ul><li><a href='/greet?name=YourName'>/greet?name=YourName</a></li><li><a href='/status'>/status</a></li><li><a href='/name.html'>/name.html</a></li><li><a href='/practice'>/practice</a></li></ul>"
 
 # When users visit /greet, the greet function will be called and the name parameter will be read from the URL query string and used to generate a personalized greeting.
 @app.route("/greet")
@@ -21,7 +21,8 @@ def greet():
 @app.route("/status")
 def status():
     system_status = "All systems operational"
-    return render_template("status.html", status=system_status)
+    environment = "Development"
+    return render_template("status.html", status=system_status, environment=environment)
 
 # This route serves a static HTML file named name.html located in the static directory. Flask does not perform any processing on static files; it simply serves them as they are.
 @app.route("/name.html")
@@ -41,13 +42,44 @@ def submit():
 @app.route("/practice")
 def practice():
     # TODO 1: Read query params with defaults
-    
+    name = request.args.get("name", "Student")
+    role = request.args.get("role", "MSHI")
+    op = request.args.get("op", "add").lower()
+
     # TODO 2: Read a and b, default to 0, and convert to float. If conversion fails, return an error message.
+    try:
+        a = float(request.args.get("a", 0))
+        b = float(request.args.get("b", 0))
+    except ValueError:
+        return "Invalid input: a and b must be numbers.", 400
 
     # TODO 3: Compute result based on op
+    if op in ["add", "+"]:
+        result = a + b
+        operation_name = "addition"
+    elif op in ["sub", "subtract", "-"]:
+        result = a - b
+        operation_name = "subtraction"
+    elif op in ["mul", "multiply", "*"]:
+        result = a * b
+        operation_name = "multiplication"
+    elif op in ["div", "divide", "/"]:
+        if b == 0:
+            return "Invalid operation: division by zero is not allowed.", 400
+        result = a / b
+        operation_name = "division"
+    else:
+        return "Invalid op. Use add, sub, mul, or div.", 400
 
     # TODO 4: Return a clear response
-    return "This is a placeholder response. Replace this with your actual implementation."
+    return (
+        f"<h1>Practice Result</h1>"
+        f"<p>Name: {name}</p>"
+        f"<p>Role: {role}</p>"
+        f"<p>Operation: {operation_name}</p>"
+        f"<p>Inputs: a={a}, b={b}</p>"
+        f"<p>Result: {result}</p>"
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

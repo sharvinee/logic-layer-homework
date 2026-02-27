@@ -73,7 +73,7 @@ def practice():
 
     # TODO 4: Return a clear response
     return (
-        f"<h1>Practice Result</h1>"
+        f"<h1>Practice Result!</h1>"
         f"<p>Name: {name}</p>"
         f"<p>Role: {role}</p>"
         f"<p>Operation: {operation_name}</p>"
